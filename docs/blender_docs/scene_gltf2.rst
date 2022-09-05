@@ -542,7 +542,7 @@ are supported directly by this add-on:
 - ``KHR_materials_variants``
 - ``KHR_lights_punctual``
 - ``KHR_texture_transform``
-- ``KHR_mesh_quantization``
+- ``OMI_ngon_encoding``
 
 
 
@@ -560,6 +560,7 @@ are supported directly by this add-on:
 - ``KHR_materials_ior``
 - ``KHR_materials_variants``
 - ``KHR_texture_transform``
+- ``OMI_ngon_encoding`` (quads only)
 
 
 Third-party glTF Extensions

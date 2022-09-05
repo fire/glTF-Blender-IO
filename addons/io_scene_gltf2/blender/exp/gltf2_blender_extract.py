@@ -224,7 +224,7 @@ def extract_primitives(blender_mesh, uuid_for_skined_data, blender_vertex_groups
 
     # Create all the primitives.
 
-    primitives = []
+    primitives = []        
 
     for material_idx, dot_indices in prim_indices.items():
         # Extract just dots used by this primitive, deduplicate them, and
@@ -232,6 +232,27 @@ def extract_primitives(blender_mesh, uuid_for_skined_data, blender_vertex_groups
         prim_dots = dots[dot_indices]
         prim_dots, indices = np.unique(prim_dots, return_inverse=True)
 
+        loop_index_list = []
+        is_quad = False
+        first_idx_of_last_tri = -1  # for FB_ngon_encoding
+        if len(blender_polygon.loop_indices) == 4:
+            loop_index_list.extend(blender_polygon.loop_indices)
+            is_quad = True
+        elif len(blender_polygon.loop_indices) > 3:
+            # Triangulation of polygon. Using internal function, as non-convex polygons could exist.
+            polyline = []
+
+            for loop_index in blender_polygon.loop_indices:
+                vertex_index = blender_mesh.loops[loop_index].vertex_index
+                v = blender_mesh.vertices[vertex_index].co
+                polyline.append(Vector((v[0], v[1], v[2])))
+
+            triangles = tessellate_polygon((polyline,))
+
+            for triangle in triangles:
+
+                for triangle_index in triangle:
+                    loop_index_list.append(blender_polygon.loop_indices[triangle_index])
         if len(prim_dots) == 0:
             continue
 

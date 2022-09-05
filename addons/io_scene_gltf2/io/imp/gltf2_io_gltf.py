@@ -63,6 +63,7 @@ class glTFImporter():
             'KHR_materials_specular',
             'KHR_materials_sheen',
             'KHR_materials_ior'
+            'OMI_ngon_encoding',
         ]
 
         # Add extensions required supported by custom import extensions

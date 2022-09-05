@@ -234,6 +234,7 @@ def __gather_extensions(blender_mesh,
                         export_settings):
     extensions = {}
 
+    extensions["OMI_ngon_encoding"] = gltf2_io_extensions.Extension('OMI_ngon_encoding', {}, required=True)
     if bpy.context.preferences.addons['io_scene_gltf2'].preferences.KHR_materials_variants_ui is False:
         return None
 
