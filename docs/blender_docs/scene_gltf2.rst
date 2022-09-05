@@ -335,6 +335,7 @@ are supported directly by this add-on:
 - ``KHR_lights_punctual``
 - ``KHR_materials_unlit``
 - ``KHR_texture_transform``
+- ``FB_ngon_encoding``
 
 
 .. rubric:: Export
@@ -343,6 +344,7 @@ are supported directly by this add-on:
 - ``KHR_lights_punctual``
 - ``KHR_materials_unlit``
 - ``KHR_texture_transform``
+- ``FB_ngon_encoding`` (quads only)
 
 
 Animation
